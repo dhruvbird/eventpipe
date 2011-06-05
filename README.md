@@ -1,5 +1,5 @@
 
-See the file tests.js for details on usage
+See the file [test.js](https://github.com/dhruvbird/eventpipe/blob/master/test.js) for details on usage
 
 1. API is the same as node.js' EventEmitter http://nodejs.org/docs/v0.4.2/api/events.html
 2. Additional 'priority' parameter in addListener (or on) specifies when to call handler
