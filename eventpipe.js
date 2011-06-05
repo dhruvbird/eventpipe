@@ -29,7 +29,8 @@ EventPipe.prototype = {
 	var _x = _l.filter(function(lo) {
 	    return lo.proc !== listener;
 	});
-	_l.splice(0, _l.length, _x);
+	_x.unshift(0, _l.length);
+	_l.splice.apply(_l, _x);
     }, 
     removeAllListeners: function(event) {
 	var _l = this.listeners(event);
