@@ -19,7 +19,7 @@ EventPipe.prototype = {
 	    console.error('Error: Too many listeners!! This may be a bug in your code');
 	}
 
-	priority = priority || 50;
+	priority = (typeof priority === 'number' ? priority : (priority || 50));
 	_l.push({
 	    priority: priority, 
 	    proc: proc
@@ -27,6 +27,15 @@ EventPipe.prototype = {
 	_l.sort(function(l, r) {
 	    return l.priority - r.priority;
 	});
+    }, 
+    once: function(event, proc, priority) {
+	var _proc;
+	_proc = function() {
+	    this.removeListener(event, _proc);
+	    proc.apply(null, arguments);
+	}.bind(this);
+
+	this.on(event, _proc, priority);
     }, 
     removeListener: function(event, listener) {
 	var _l = this.listeners(event);
