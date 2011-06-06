@@ -27,5 +27,4 @@ ep.on('log', print_rest); // Default priority is 50
 ep.on('log', return_nothing, 15);
 ep.on('log', return_false, 55);
 
-
 ep.emit('log', 'The Quick Brown Fox Jumps Over the Lazy Dog');

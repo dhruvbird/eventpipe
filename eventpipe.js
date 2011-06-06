@@ -10,9 +10,13 @@ EventPipe.prototype = {
     }, 
     on: function(event, proc, priority) {
 	var _l = this.listeners(event);
+	
+	if (typeof proc !== 'function') {
+	    throw new Error('The event listener MUST be a function. You passed in a ' + typeof proc);
+	}
 
 	if (_l.length >= this._maxListeners) {
-	    throw new Error('Too many listeners!!');
+	    console.error('Error: Too many listeners!! This may be a bug in your code');
 	}
 
 	priority = priority || 50;
@@ -50,6 +54,10 @@ EventPipe.prototype = {
     }, 
     listeners: function(event) {
 	this._ep_init();
+	if (!event) {
+	    throw new Error("Event is not defined or is falsy");
+	}
+
 	if (!this._ep_events[event]) {
 	    this._ep_events[event] = [ ];
 	}
