@@ -10,7 +10,7 @@ EventPipe.prototype = {
     }, 
     on: function(event, proc, priority) {
 	var _l = this.listeners(event);
-	
+
 	if (typeof proc !== 'function') {
 	    throw new Error('The event listener MUST be a function. You passed in a ' + typeof proc);
 	}
@@ -27,6 +27,8 @@ EventPipe.prototype = {
 	_l.sort(function(l, r) {
 	    return l.priority - r.priority;
 	});
+
+	this.emit('newListener', proc);
     }, 
     once: function(event, proc, priority) {
 	var _proc;
