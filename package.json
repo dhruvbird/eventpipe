@@ -1,0 +1,19 @@
+{ "name": "eventpipe"
+,"version": "0.0.1"
+,"main": "./eventpipe.js"
+,"description": "An Event Pipe for node.js"
+,"author": "Dhruv Matani"
+,"dependencies": { }
+,"repositories": [{"type": "git"
+		  ,"path": "https://github.com/dhruvbird/eventpipe"
+		  }]
+,"homepage": "https://github.com/dhruvbird/eventpipe"
+,"bugs": "https://github.com/dhruvbird/eventpipe/issues"
+,"maintainers": [{"name": "Dhruv"
+		 ,"email": "dhruvbird@gmail.com"
+		 ,"web": "http://dhruvbird.com/"
+		 }]
+,"contributors": [ ]
+,"licenses": [{"type": "MIT"}]
+,"engine": "node"
+}
