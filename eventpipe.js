@@ -29,6 +29,7 @@ EventPipe.prototype = {
 	});
 
 	this.emit('newListener', proc);
+	return this;
     }, 
     once: function(event, proc, priority) {
 	var _proc;
@@ -38,6 +39,7 @@ EventPipe.prototype = {
 	}.bind(this);
 
 	this.on(event, _proc, priority);
+	return this;
     }, 
     removeListener: function(event, listener) {
 	var _l = this.listeners(event);
@@ -46,10 +48,12 @@ EventPipe.prototype = {
 	});
 	_x.unshift(0, _l.length);
 	_l.splice.apply(_l, _x);
+	return this;
     }, 
     removeAllListeners: function(event) {
 	var _l = this.listeners(event);
 	_l.splice(0, _l.length);
+	return this;
     }, 
     emit: function(event) {
 	var _l = this.listeners(event);
@@ -77,6 +81,7 @@ EventPipe.prototype = {
     setMaxListeners: function(n) {
 	this._ep_init();
 	this._maxListeners = Number(n) === NaN ? 10 : Number(n);
+	return this;
     }
 };
 

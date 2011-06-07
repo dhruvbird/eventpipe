@@ -1,5 +1,5 @@
 { "name": "eventpipe"
-,"version": "0.0.1"
+,"version": "0.0.2"
 ,"main": "./eventpipe.js"
 ,"description": "An Event Pipe for node.js"
 ,"author": "Dhruv Matani"
@@ -9,7 +9,7 @@
 		  }]
 ,"homepage": "https://github.com/dhruvbird/eventpipe"
 ,"bugs": "https://github.com/dhruvbird/eventpipe/issues"
-,"maintainers": [{"name": "Dhruv"
+,"maintainers": [{"name": "Dhruv Matani"
 		 ,"email": "dhruvbird@gmail.com"
 		 ,"web": "http://dhruvbird.com/"
 		 }]
