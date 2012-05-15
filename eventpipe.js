@@ -73,14 +73,15 @@ EventPipe.prototype = {
 	    throw new Error("Event is not defined or is falsy");
 	}
 
-	if (!this._ep_events[event]) {
-	    this._ep_events[event] = [ ];
+        var event_listeners = this._ep_events[event];
+	if (!event_listeners) {
+            return [ ];
 	}
-	return this._ep_events[event];
+	return event_listeners;
     }, 
     setMaxListeners: function(n) {
 	this._ep_init();
-	this._maxListeners = Number(n) === NaN ? 10 : Number(n);
+	this._maxListeners = (Number(n) === NaN ? 10 : Number(n));
 	return this;
     }
 };
