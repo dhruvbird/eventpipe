@@ -60,7 +60,22 @@ EventPipe.prototype = {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i, _args;
 	for (i = 0; i < _l.length && args !== false; ++i) {
-	    _args = _l[i].proc.apply(this, args);
+            switch (args.length) {
+            case 0:
+                _args = _l[i].proc();
+                break;
+            case 1:
+                _args = _l[i].proc(args[0]);
+                break;
+            case 2:
+                _args = _l[i].proc(args[0], args[1]);
+                break;
+            case 3:
+                _args = _l[i].proc(args[0], args[1], args[2]);
+                break;
+            default:
+	        _args = _l[i].proc.apply(this, args);
+            }
 	    if (typeof _args !== 'undefined') {
 		args = _args;
 	    }
@@ -75,7 +90,8 @@ EventPipe.prototype = {
 
         var event_listeners = this._ep_events[event];
 	if (!event_listeners) {
-            return [ ];
+            this._ep_events[event] = [ ];
+            return this._ep_events[event];
 	}
 	return event_listeners;
     }, 
