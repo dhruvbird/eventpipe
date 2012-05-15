@@ -35,7 +35,7 @@ EventPipe.prototype = {
 	var _proc;
 	_proc = function() {
 	    this.removeListener(event, _proc);
-	    proc.apply(null, arguments);
+	    proc.apply(this, arguments);
 	}.bind(this);
 
 	this.on(event, _proc, priority);
@@ -60,7 +60,7 @@ EventPipe.prototype = {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i, _args;
 	for (i = 0; i < _l.length && args !== false; ++i) {
-	    _args = _l[i].proc.apply(null, args);
+	    _args = _l[i].proc.apply(this, args);
 	    if (typeof _args !== 'undefined') {
 		args = _args;
 	    }
