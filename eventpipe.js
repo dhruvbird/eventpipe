@@ -80,6 +80,14 @@ EventPipe.prototype = {
 		args = _args;
 	    }
 	}
+
+        if (event === 'error' && i === 0) {
+            if (args[0] instanceof Error) {
+                throw args[0];
+            } else {
+                throw new Error("Uncaught, unspecified 'error' event");
+            }
+        }
 	return i > 0;
     }, 
     listeners: function(event) {
